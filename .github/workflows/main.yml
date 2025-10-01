@@ -26,8 +26,8 @@ jobs:
             - name: Build and push Docker image
               uses: docker/build-push-action@v6
               with:
-                context: .
-                file: /code-base/website/Dockerfile
+                context: ./code-base/website
+                file: ./code-base/website/Dockerfile
                 push: true
                 tags: ${{ secrets.DOCKER_USERNAME }}/my-ecs-demo-image:latest
              
@@ -46,12 +46,12 @@ jobs:
             # Step 6: Initialize Terraform
             - name: Terraform Init
               run: terraform init
-              working-directory: /infrastructure
+              working-directory: ./infrastructure
 
             # Step 7: Apply Terraform configuration
             - name: Terraform Apply
               run: terraform apply -auto-approve tfplan
-              working-directory: /infrastructure
+              working-directory: ./infrastructure
               env:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
