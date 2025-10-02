@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = jsonencode([
     {
       name      = "my-app"
-      image     = "obansa/my-demo-app"
+      image     = "obansa/my-ecs-demo-image:latest"
       essential = true
       portMappings = [
         {

@@ -3,10 +3,6 @@ module "vpc" {
   vpc_cider = "10.0.0.0/16"
 }
 
-output "vpc_id" {
-  value = module.vpc.vpc_id
-}
-
 
 module "ecs" {
   source = "./modules/ecs"
@@ -21,4 +17,8 @@ module "alb" {
   source = "./modules/alb"
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.public_subnets
+}
+
+output "alb_listener_dns" {
+  value = module.alb.dns_name
 }
