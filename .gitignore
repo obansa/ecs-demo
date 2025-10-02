@@ -7,5 +7,3 @@ ENV/
 # Terraform local state
 .terraform/
 .terraform.lock.hcl
-*.tfstate
-*.tfstate.backup
